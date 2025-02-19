@@ -1,0 +1,33 @@
+export const videos = {
+  //
+  initialMeeting: "DQACAgIAAxkBAAIB0Wefm1lhQYPgwYXjsBVFxscyhSR9AALQYwACSRaYSOFgKFVem2nXNgQ",
+  initialMeeting2: "DQACAgIAAxkBAAIBr2efh01syiJGdm8nXRVnzjJpLrwRAALBYwACSRaYSC17B5gAAaADazYE",
+  initialMeeting3: "DQACAgIAAxkBAAIBsWefh2UHnnJBhA8JzVtPAe7yvPpeAALWYwACSRaYSNgLDKllvOQdNgQ",
+  //
+  overallCourseInfo: "BAACAgIAAxkBAAIBkGefYNH8HbCGFPCZxqh6B1q9qXWEAALVaQACQH_4SFTrQM8K5KTMNgQ",
+  //
+  aboutTest: "DQACAgIAAxkBAAIHU2ep9xEfnFGj41cZkBsHIRsDeBaOAAIeZAACSRaYSIhMZwtByN1UNgQ",
+  //
+  meetExpertPsycho1: "DQACAgIAAxkBAAICImehLmZl_JpXGY4-aaoiAmdGlkXUAAKIYQACNr4gSLamyrmyXldBNgQ",
+  meetExpertPsycho2: "DQACAgIAAxkBAAICJGehLnvKiT-TJ2BUpDKvVr4ma5bpAAKUYQACNr4gSPwK7OUkeP0bNgQ",
+  meetExpertPsycho3: "DQACAgIAAxkBAAICJmehLoatKdHPS1W3xLGJniFC4rlmAAKZYQACNr4gSLnKbXw9LcQoNgQ",
+  //
+  meetExpertTarget: "BAACAgQAAxkBAAIL22euZFzTyRHlptZb0k996NS6pD_pAALVGQAC_kBwUSBGxlpJpQ1zNgQ",
+  //
+  meetExpertFigures1: "BAACAgQAAxkBAAICKmehLqnPUHVysKfoq4CKTjpqHSt7AAIQFQACisYIUTElKOCugq2aNgQ",
+  meetExpertFigures2: "BAACAgQAAxkBAAICLGehLrSkk6MqZC6boUnFaIsF0yhiAAIRFQACisYIUUqp_jUFXjToNgQ",
+  //
+  testLessonNote1: "DQACAgIAAxkBAAIHi2eqBSuNBqlp2iuP1c1kSvMyFueRAAIQZAACSRaYSEwYiTIX_C_pNgQ",
+  testLessonNote2: "DQACAgIAAxkBAAIHjWeqBTmh5lMolf1wJytMs_MCtNrbAAIUZAACSRaYSFKDKBFZiesVNgQ",
+  testLessonVideo: "BAACAgIAAxkBAAIHj2eqBURH-eeJ2kzTdNf_78jAYWbRAAIvZAACT3pISahZXRjJLWEyNgQ",
+  //
+  giftLessonVideo: "BAACAgIAAxkBAAIIW2eqFGWnLPj_9aw6LFa5PjoYyZjcAAJaKwACZK7hSucEn91_ZynENgQ",
+  //
+  psychoLesson1: "BAACAgIAAxkBAAIIXWeqPbe2lx7fjmt1OBoSBDkgdopUAAIcagACNfUhSAw6NLCtB2ZKNgQ",
+  psychoLesson2: "BAACAgIAAxkBAAIIX2eqPc0Itx5mOfIWvkyv0l9lcO8RAAIiagACNfUhSGUEqZ7zuZPNNgQ",
+  psychoLesson3: "BAACAgIAAxkBAAIIYWeqPd_dR-XA92uFDQwlvPAyac6hAALxZgACpLAoSFqvYvzr-QajNgQ",
+  psychoLesson4: "BAACAgIAAxkBAAIIY2eqPgJ8QRvvPkPn5oa82Vh4WZ9IAAICZwACpLAoSAIPHUaALnoeNgQ",
+  //
+  ending1: "DQACAgIAAxkBAAIIw2eqViN3jce6A_6QVPeDXJ9XSJ3KAAIyZAACSRaYSAf0C8Cvwd46NgQ",
+  ending2: "DQACAgIAAxkBAAIIxWeqVjTvX4xP-J1bYJQm_tjCdqO7AAImZAACSRaYSBt_S0GWJBFbNgQ"
+}
