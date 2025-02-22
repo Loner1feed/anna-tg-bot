@@ -7,5 +7,6 @@ export default {
   PORT: process.env.PORT || 3000,
   MAIN_APPROVE_TG_ID: Number(process.env.MAIN_APPROVE_TG_ID),
   GROUP_ID: Number(process.env.GROUP_ID),
-  GROUP_LINK: process.env.GROUP_LINK
+  GROUP_LINK: process.env.GROUP_LINK,
+  WEBSITE_URL: process.env.WEBSITE_URL || ""
 };

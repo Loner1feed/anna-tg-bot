@@ -87,6 +87,15 @@ export const showPsychoLessonsKeyboard = [
   ]
 ]
 
+export const courseAdvKeyboard = [
+  [
+    {
+      text: "Перейти на сайт",
+      url: config.WEBSITE_URL
+    }
+  ]
+]
+
 // кнопки для остальных нужд
 export const startCommandKeyboard = [
   [

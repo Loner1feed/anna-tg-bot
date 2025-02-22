@@ -1,5 +1,5 @@
 import { voices } from "./voices.js";
-import { getCourseInfoKeyboard, startLessonKeyboard, startTestKeyboard } from "../keyboards/inline.js";
+import { courseAdvKeyboard, getCourseInfoKeyboard, startLessonKeyboard, startTestKeyboard } from "../keyboards/inline.js";
 import { lessonPreDescription } from "./messages.js";
 import { videos } from "./videos.js";
 
@@ -168,12 +168,30 @@ export const sequences = {
         messageArr: [
           { type: "video_note", file_id: videos.ending1 },
           { type: "video_note", file_id: videos.ending2 }
+        ],
+        nextStepText: "Узнать больше о курсе",
+        nextStepBtnText: "🔽",
+      },
+
+      {
+        messageArr: [
+          "Друзья, я хочу вам рассказать какое основное оборудование вам понадобиться для курса «Универсальный кондитер»",
+          { type: "video", file_id: videos.appliances },
+          { type: "video", file_id: videos.finalEnding }
         ]
       }
     ],
 
     endMessage: [
-      "РЕКЛАМА ПОКУПКИ КУРСА"
+      `
+        Тадам!\n\nНаконец-то я с радостью объявляю о завершении нашего предобучения и начале самого интересного и главного курса — "Универсальный кондитер"!\n\nНа этом курсе мы изучим, как создавать сложные изделия простыми методами, чтобы это мог сделать абсолютно каждый. Приглашаю вас перейти на сайт и выбрать подходящий для вас пакет обучения. Жду вас с нетерпением!\n\nP.S. Самые низкие цены именно сейчас, не упустите возможность забронировать свое место!
+      `,
+      {
+        parse_mode: "HTML",
+        reply_markup: {
+          inline_keyboard: courseAdvKeyboard
+        }
+      }
     ]
   }
 };

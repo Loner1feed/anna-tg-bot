@@ -51,23 +51,27 @@ async function sendTestResult(ctx, answers) {
 }
 
 export async function sendTestQuestion(ctx, index, answers) {
-  if (index >= testQuestions.length) {
-    return sendTestResult(ctx, answers);
+  try {
+    if (index >= testQuestions.length) {
+      return sendTestResult(ctx, answers);
+    }
+
+    const questionData = testQuestions[index];
+
+    await ctx.editMessageText(
+      `🎂 Тест <b>"Какой ты кондитер?"</b>\n\nВопрос ${index + 1} из ${testQuestions.length}:\n${questionData.question}\n\nВарианты ответа:\n${questionData.options[0]}${questionData.options[1]}${questionData.options[2]}`,
+      {
+        parse_mode: "HTML",
+        reply_markup: {
+          inline_keyboard: [
+            ["A", "B", "C"].map((option, i) => ({
+              text: option,
+              callback_data: `answer_${["A", "B", "C"][i]}_${index}_${answers.A}_${answers.B}_${answers.C}`,
+            })),
+          ]
+        },
+      });
+  } catch (error) {
+    console.error(error)
   }
-
-  const questionData = testQuestions[index];
-
-  await ctx.editMessageText(
-    `🎂 Тест <b>"Какой ты кондитер?"</b>\n\nВопрос ${index + 1} из ${testQuestions.length}:\n${questionData.question}\n\nВарианты ответа:\n${questionData.options[0]}${questionData.options[1]}${questionData.options[2]}`,
-    {
-      parse_mode: "HTML",
-      reply_markup: {
-        inline_keyboard: [
-          ["A", "B", "C"].map((option, i) => ({
-            text: option,
-            callback_data: `answer_${["A", "B", "C"][i]}_${index}_${answers.A}_${answers.B}_${answers.C}`,
-          })),
-        ]
-      },
-    });
 }
