@@ -61,7 +61,9 @@ export const startLesson = async (ctx) => {
         await Lesson.findOneAndUpdate({ telegramId, lesson: "lesson1" }, { photoReceived: false, photoApproved: false, photoId: "", failed: true });
 
         await ctx.answerCbQuery();
-        return ctx.reply(lessonNotCompleted);
+        return await ctx.reply(
+          "🚫 Вы уже пытались пройти урок. Фото изделия не было отправлено в срок или не было одобрено.\n\nНо не стоит расстраиваться!\nПройдите уроки от психолога, которые вам пригодятся в достижении ваших целей и мечт 🌺",
+          { reply_markup: { inline_keyboard: showPsychoLessonsKeyboard } })
 
       }
     }

@@ -8,7 +8,7 @@ import approve from "./actions/approve.js";
 import reject from "./actions/reject.js";
 import handleTestQuestion from "./actions/handleTestQuestion.js";
 import { Lesson } from './models/Lesson.js';
-import { lessonNotCompleted } from "./config/messages.js";
+import { showPsychoLessonsKeyboard } from "./keyboards/inline.js";
 
 const bot = new Telegraf(config.BOT_TOKEN);
 
@@ -48,40 +48,44 @@ bot.action(/^reject_(\d+)$/, reject);
 bot.action(/^answer_[A-C]_\d+_\d+_\d+_\d+$/, handleTestQuestion);
 
 // Задача для проверки уроков пользователя
-// cron.schedule("0 12 * * *", async () => {
-//   const now = new Date();
-//   // ищем незавершенные уроки
-//   const lessons = await Lesson.find({ completed: false, failed: false });
+cron.schedule("0 12 * * *", async () => {
+  const now = new Date();
+  // ищем незавершенные уроки
+  const lessons = await Lesson.find({ completed: false, failed: false });
 
-//   for (const lesson of lessons) {
-//     const timePassed = now - lesson.startedAt;
-//     const timeLeft = 3 * 24 * 60 * 60 * 1000 - timePassed;
-//     const telegramId = lesson.telegramId;
+  for (const lesson of lessons) {
+    const timePassed = now - lesson.startedAt;
+    const timeLeft = 3 * 24 * 60 * 60 * 1000 - timePassed;
+    const telegramId = lesson.telegramId;
 
-//     if (timeLeft > 0) {
-//       const hoursLeft = Math.ceil(timeLeft / (1000 * 60 * 60));
-//       let message;
-//       if (hoursLeft <= 24) {
-//         message = `⚠️ Остался 1 день для отправки фото! Не забудьте загрузить его.`;
-//       } else {
-//         message = `⏳ У вас осталось ${Math.ceil(hoursLeft / 24)} дня(ей) для отправки фото.`;
-//       }
+    if (timeLeft > 0) {
+      const hoursLeft = Math.ceil(timeLeft / (1000 * 60 * 60));
+      let message;
+      if (hoursLeft <= 24) {
+        message = `⚠️ Остался 1 день для отправки фото! Не забудьте загрузить его.`;
+      } else {
+        message = `⏳ У вас осталось ${Math.ceil(hoursLeft / 24)} дня(ей) для отправки фото.`;
+      }
 
-//       try {
-//         await bot.telegram.sendMessage(telegramId, message);
-//       } catch (err) {
-//         console.error(`Ошибка отправки уведомления пользователю ${telegramId}:`, err);
-//       }
-//     } else {
-//       console.log(`Дедлайн истёк для пользователя ${telegramId}. Запуск финального действия...`);
+      try {
+        await bot.telegram.sendMessage(telegramId, message);
+      } catch (err) {
+        console.error(`Ошибка отправки уведомления пользователю ${telegramId}:`, err);
+      }
+    } else {
+      console.log(`Дедлайн истёк для пользователя ${telegramId}. Запуск финального действия...`);
 
-//       // Здесь добавь код, который выполняется по истечении 3 дней
+      // Здесь добавь код, который выполняется по истечении 3 дней
 
-//       await bot.telegram.sendMessage(lessonNotCompleted);
+      await bot.telegram.sendMessage(
+        telegramId,
+        "🚫 К сожалению, время на выполнение урока истекло.\n\nНо не стоит расстраиваться!\nПройдите уроки от психолога, которые вам пригодятся в достижении ваших целей и мечт 🌺",
+        { reply_markup: { inline_keyboard: showPsychoLessonsKeyboard } }
+      );
 
-//       await Lesson.findOneAndUpdate({ telegramId, lesson: "lesson1" }, { photoReceived: false, photoApproved: false, photoId: "", failed: true });
-//     }
-//   }
-// })
+      await Lesson.findOneAndUpdate({ telegramId, lesson: "lesson1" }, { photoReceived: false, photoApproved: false, photoId: "", failed: true });
+    }
+  }
+})
 
 export default bot; 
