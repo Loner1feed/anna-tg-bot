@@ -9,8 +9,12 @@ import reject from "./actions/reject.js";
 import handleTestQuestion from "./actions/handleTestQuestion.js";
 import { Lesson } from './models/Lesson.js';
 import { showPsychoLessonsKeyboard } from "./keyboards/inline.js";
+import { filterGroupMessages } from "./middlewares/filterGroupMessages.js";
 
 const bot = new Telegraf(config.BOT_TOKEN);
+
+// MIDDLEWARES
+bot.use(filterGroupMessages);
 
 // Динамическая загрузка обработчиков комманд
 const commandsPath = path.resolve("./src/commands");
